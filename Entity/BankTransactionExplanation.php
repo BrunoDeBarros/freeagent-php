@@ -78,6 +78,13 @@ class BankTransactionExplanation extends AbstractEntity
     protected $description;
 
     /**
+     * @var bool
+     * @Groups({"get", "post", "update"})
+     * @Type("boolean")
+     */
+    protected $markedForReview;
+
+    /**
      * @var float
      * @Groups({"get", "post", "update"})
      * @Type("double")
@@ -322,6 +329,24 @@ class BankTransactionExplanation extends AbstractEntity
     public function setDatedOn($datedOn)
     {
         $this->datedOn = $datedOn;
+        return $this;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getMarkedForReview()
+    {
+        return $this->markedForReview;
+    }
+
+    /**
+     * @param $markedForReview
+     * @return $this
+     */
+    public function setMarkedForReview($markedForReview)
+    {
+        $this->markedForReview = $markedForReview;
         return $this;
     }
 

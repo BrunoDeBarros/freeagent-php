@@ -65,6 +65,13 @@ class BankTransaction extends AbstractEntity
     protected $isManual;
 
     /**
+     * @var BankTransactionExplanation[]
+     * @Groups({"get"})
+     * @Type("array<SixBySix\Freeagent\Entity\BankTransactionExplanation>")
+     */
+    protected $bankTransactionExplanations;
+
+    /**
      * @return mixed
      */
     public function getUrl()
@@ -118,6 +125,14 @@ class BankTransaction extends AbstractEntity
     public function getIsManual()
     {
         return $this->isManual;
+    }
+
+    /**
+     * @return BankTransactionExplanation[]
+     */
+    public function getBankTransactionExplanations()
+    {
+        return $this->bankTransactionExplanations;
     }
 
     /**
