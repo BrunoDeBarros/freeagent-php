@@ -10,7 +10,7 @@ abstract class AbstractEntityTest extends TestCase
     /** @var  AbstractEntity */
     protected $entity;
 
-    public function setUp()
+    public function setUp(): void
     {
         parent::setUp();
         $this->api->connect();

@@ -7,18 +7,18 @@ use SixBySix\Freeagent\Exception;
 use SixBySix\Freeagent\Entity\AbstractEntity;
 use SixBySix\Freeagent\OAuth2\Api as Oauth2Api;
 
-class TestCase extends \PHPUnit_Framework_TestCase
+class TestCase extends \PHPUnit\Framework\TestCase
 {
     /** @var  Oauth2Api */
     protected $api;
 
-    public static function setUpBeforeClass()
+    public static function setUpBeforeClass(): void
     {
         parent::setUpBeforeClass();
         self::flushSandboxEntities();
     }
 
-    protected function setUp()
+    protected function setUp(): void
     {
         parent::setUp();
 
@@ -30,7 +30,7 @@ class TestCase extends \PHPUnit_Framework_TestCase
         );
     }
 
-    public static function tearDownAfterClass()
+    public static function tearDownAfterClass(): void
     {
         parent::tearDownAfterClass();
         //self::flushSandboxEntities();
@@ -60,7 +60,7 @@ class TestCase extends \PHPUnit_Framework_TestCase
         $api->connect();
 
         /** @var string[] $entities */
-        $entities = ['invoice', 'project', 'contact', 'bankAccount'];
+        $entities = ['invoice', 'project', 'contact'];
 
         /** @var string $entityName */
         foreach ($entities as $entityName) {

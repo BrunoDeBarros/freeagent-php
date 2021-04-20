@@ -19,7 +19,7 @@ class EntityCollectionTest extends TestCase
 
     public static $projects = [];
 
-    public function setUp()
+    public function setUp(): void
     {
         parent::setUp();
 
@@ -165,7 +165,7 @@ class EntityCollectionTest extends TestCase
         $this->assertEquals(1, $collection->count());
     }
 
-    public function tearDown()
+    public function tearDown(): void
     {
         parent::tearDown();
 

@@ -10,7 +10,7 @@ class ContactTest extends AbstractEntityTest
 {
     private static $currentUrl;
 
-    public function setUp()
+    public function setUp(): void
     {
         parent::setUp();
         $this->api->connect();

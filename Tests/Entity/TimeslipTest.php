@@ -8,7 +8,7 @@ use SixBySix\Freeagent\Tests\TestCase;
 
 class TimeslipTest extends AbstractEntityTest
 {
-    public function setUp()
+    public function setUp(): void
     {
         parent::setUp();
         $this->api->connect();

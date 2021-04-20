@@ -540,6 +540,7 @@ class Api
 
         /** @var mixed[] $response */
         $response = $this->getProvider()->getResponse($request);
+        $response = json_decode($response->getBody()->getContents(), true);
 
         if (is_array($response)) {
             // api entity error encountered
