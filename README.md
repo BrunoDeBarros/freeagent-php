@@ -8,7 +8,7 @@ This is a PHP library that provides a comprehensive wrapper for the [Freeagent v
 
 You can install this library via [Composer](https://getcomposer.org/download/):
 
-`composer require brunodebarros/freeagent-php`
+`composer require brunodebarros/freeagent-php dev-master`
 
 ## Compatibility
 
