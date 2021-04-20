@@ -2,11 +2,14 @@
 
 namespace SixBySix\Freeagent\OAuth2;
 
+use GuzzleHttp\Client;
+use GuzzleHttp\HandlerStack;
 use League\OAuth2\Client\Provider\AbstractProvider;
 use League\OAuth2\Client\Provider\Exception\IdentityProviderException;
 use League\OAuth2\Client\Token\AccessToken;
 use Psr\Http\Message\ResponseInterface;
 use SixBySix\Freeagent\Entity\Company;
+use Spatie\GuzzleRateLimiterMiddleware\RateLimiterMiddleware;
 
 /**
  * Class Provider
@@ -36,7 +39,14 @@ class Provider extends AbstractProvider
      */
     public function __construct(array $options = array())
     {
-        parent::__construct($options);
+        $stack = HandlerStack::create();
+        $stack->push(RateLimiterMiddleware::perMinute(120));
+
+        $client = new Client([
+            'handler' => $stack,
+        ]);
+
+        parent::__construct($options, ["httpClient" => $client]);
         if (isset($options['sandbox']) && $options['sandbox']) {
             $this->baseURL = 'https://api.sandbox.freeagent.com/v2/';
         }
