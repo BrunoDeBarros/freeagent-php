@@ -24,6 +24,7 @@ class BankAccount extends AbstractEntity
     const STATEMENT_OFX = 'ofx';
     const STATEMENT_CSV = 'csv';
     const STATEMENT_QIF = 'qif';
+    const STATEMENT_ARRAY = 'array';
 
     /**
      * @var string
@@ -206,7 +207,7 @@ class BankAccount extends AbstractEntity
      */
     public function setIsPersonal($isPersonal)
     {
-        $this->isPersonal = (bool) $isPersonal;
+        $this->isPersonal = (bool)$isPersonal;
         return $this;
     }
 
@@ -410,13 +411,20 @@ class BankAccount extends AbstractEntity
                     sprintf('Unable to upload %s to bank account', $file)
                 );
             }
+
+            $this->getApi()->POST($url, http_build_query(['statement' => $data]), [
+                'Content-Type' => 'application/x-www-form-urlencoded',
+            ]);
         } elseif (in_array($dataFormat, [self::STATEMENT_OFX, self::STATEMENT_CSV, self::STATEMENT_QIF])) {
             $data = $file;
-        }
 
-        $this->getApi()->POST($url, http_build_query(['statement' => $data]), [
-            'Content-Type' => 'application/x-www-form-urlencoded',
-        ]);
+            $this->getApi()->POST($url, http_build_query(['statement' => $data]), [
+                'Content-Type' => 'application/x-www-form-urlencoded',
+            ]);
+        } elseif ($dataFormat == self::STATEMENT_ARRAY) {
+            $data = $file;
+            $this->getApi()->POST($url, json_encode(['statement' => $data]));
+        }
     }
 
     public function getTransactions()
