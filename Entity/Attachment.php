@@ -128,4 +128,20 @@ class Attachment extends AbstractEntity
     {
         return self::API_ENTITY_NAME;
     }
+
+    /**
+     * @param string $fileName
+     */
+    public function setFileName(string $fileName): void
+    {
+        $this->fileName = $fileName;
+    }
+
+    /**
+     * @param string $contentType
+     */
+    public function setContentType(string $contentType): void
+    {
+        $this->contentType = $contentType;
+    }
 }
