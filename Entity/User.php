@@ -223,4 +223,12 @@ class User extends AbstractEntity
     {
         return self::API_ENTITY_NAME;
     }
+
+    /**
+     * @return mixed
+     */
+    public function getNiNumber()
+    {
+        return $this->niNumber;
+    }
 }
