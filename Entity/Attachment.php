@@ -38,14 +38,14 @@ class Attachment extends AbstractEntity
 
     /**
      * @var string
-     * @Groups({"get"})
+     * @Groups({"get", "post", "update"})
      * @Type("string")
      */
     protected $contentType;
 
     /**
      * @var string
-     * @Groups({"get"})
+     * @Groups({"get", "post", "update"})
      * @Type("string")
      */
     protected $fileName;
