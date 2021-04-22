@@ -79,6 +79,13 @@ class Bill extends AbstractEntity
     protected $category;
 
     /**
+     * @var string
+     * @Groups({"get"})
+     * @Type("string")
+     */
+    protected $currency;
+
+    /**
      * @var Category
      */
     protected $categoryEntity;
@@ -642,6 +649,14 @@ class Bill extends AbstractEntity
     public function getCreatedAt()
     {
         return $this->createdAt;
+    }
+
+    /**
+     * @return string
+     */
+    public function getCurrency(): string
+    {
+        return $this->currency;
     }
 
     public function getApiResourceName()
