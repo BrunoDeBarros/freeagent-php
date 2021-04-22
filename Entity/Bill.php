@@ -182,7 +182,7 @@ class Bill extends AbstractEntity
 
     /**
      * @var Attachment
-     * @Group({"get", "post", "update"})
+     * @Groups({"get", "post", "update"})
      * @Type("SixBySix\Freeagent\Entity\Attachment")
      */
     protected $attachment;
